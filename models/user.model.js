@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/dbConnect');
+const { sequelize } = require('../config/database');
 
-const User = sequelize.define('User', {
+const UserModal = sequelize.define('User', {
  fullname: {
     type: DataTypes.STRING,
     allowNull: false
@@ -33,4 +33,4 @@ const User = sequelize.define('User', {
   timestamps: true    
 });
 
-module.exports = User;
+module.exports = UserModal;
