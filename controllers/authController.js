@@ -16,7 +16,6 @@ const signUpController = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
     await UserModal.create({
       username,
       fullname,
@@ -74,18 +73,23 @@ const loginController = async (req, res) => {
       return res.status(409).json({ message: errorMsg, success: false });
     }
 
-   
-
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser.id },
       process.env.SECRET_KEY,
       { expiresIn: "24h" }
     );
 
+    res.cookie("token", token, {
+      httpOnly: true,        
+      secure: false,         
+      sameSite: "strict",    
+      maxAge: 24 * 60 * 60 * 1000, 
+    });
+
     return res.status(200).json({
       message: "Login successful",
-      success: true,
       token,
+      success: true,
       user: {
         id: existingUser.id,
         email: existingUser.email,
@@ -100,5 +104,4 @@ const loginController = async (req, res) => {
       .json({ message: "Internal server error", success: false });
   }
 };
-
 module.exports = { signUpController, loginController };

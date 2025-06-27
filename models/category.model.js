@@ -8,7 +8,20 @@ const Category = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+     slug: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+     
+    meta_title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    meta_description: {
       type: DataTypes.STRING,
       allowNull: false,
     },

@@ -5,26 +5,27 @@ require("dotenv").config();
 const cors = require('cors')
 const bodyParser = require('body-parser');
 const router = require("./routes/user");
+const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT || 8080;
 
 app.use(bodyParser.json())
 app.use(express.json());
+app.use(cookieParser()); 
 app.use(cors())
 
-// Test DB and sync model
 sequelize
   .authenticate()
   .then(() => {
     console.log("✅ Database connected...");
-    return sequelize.sync({ alter: true }); // syncs all models
+    return sequelize.sync({ alter: true }); 
   })
   .then(() => {
     console.log("📦 Models synchronized...");
   })
   .catch((err) => console.error("❌ Error: " + err));
 
-  app.use('/', router)
+  app.use('/api', router)
 
 app.listen(PORT, async () => {
   console.log(`Server is running on ${PORT} `);
