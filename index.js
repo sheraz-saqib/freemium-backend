@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const router = require("./routes/user");
 const cookieParser = require("cookie-parser");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json())
 app.use(express.json());
@@ -28,7 +28,7 @@ sequelize
   app.use('/api', router)
 
 app.listen(PORT, async () => {
-  console.log(`Server is running on ${PORT} `);
+  console.log(`Server is running on ${PORT} `); 
 
   try {
     await DbConnection();
