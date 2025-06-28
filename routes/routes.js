@@ -9,7 +9,18 @@ const {
   deleteCategoryController,
   getAllCategoryController,
 } = require("../controllers/categoryController");
-const { getAllPricingPlansController, addPricingPlanController, deletePricingPlanController, editPricingPlanController } = require("../controllers/pricingController");
+const {
+  getAllPricingPlansController,
+  addPricingPlanController,
+  deletePricingPlanController,
+  editPricingPlanController,
+} = require("../controllers/pricingController");
+const {
+  getAllRolesController,
+  addRoleController,
+  editRoleController,
+  deleteRoleController,
+} = require("../controllers/roleController");
 const {
   getAllTagsController,
   addTagController,
@@ -62,6 +73,12 @@ router.get("/pricings", getAllPricingPlansController);
 router.post("/pricing/add", addPricingPlanController);
 router.put("/pricing/edit", editPricingPlanController);
 router.delete("/pricing/delete", deletePricingPlanController);
+
+//Role
+router.get("/roles", getAllRolesController);
+router.post("/role/add", addRoleController);
+router.put("/role/edit", editRoleController);
+router.delete("/role/delete", deleteRoleController);
 
 //Protected routes
 router.get("/products", cookieAuthValidation, (req, res) => {
