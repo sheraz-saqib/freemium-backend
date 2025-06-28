@@ -4,9 +4,8 @@ const app = express();
 require("dotenv").config();
 const cors = require('cors')
 const bodyParser = require('body-parser');
-const router = require("./routes/user");
 const cookieParser = require("cookie-parser");
-
+const router = require("./routes/routes");
 
 const PORT = process.env.PORT || 5000;
 
@@ -19,7 +18,7 @@ sequelize
   .authenticate()
   .then(() => {
     console.log("✅ Database connected...");
-    return sequelize.sync({ alter: true }); 
+    return sequelize.sync({ force: true }); 
   })
   .then(() => {
     console.log("📦 Models synchronized...");

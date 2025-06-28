@@ -13,7 +13,7 @@ const Tools = sequelize.define(
       allowNull: false,
     },
     rating: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.FLOAT, // changed from NUMBER to FLOAT
       allowNull: false,
     },
     comment: {
@@ -25,11 +25,11 @@ const Tools = sequelize.define(
       allowNull: false,
     },
     age: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER, // changed from NUMBER to INTEGER
       allowNull: true,
     },
     visit_link: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING, // changed from BOOLEAN to STRING (URL)
       allowNull: false,
     },
     pricing_plan_id: {

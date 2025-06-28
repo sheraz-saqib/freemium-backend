@@ -104,4 +104,27 @@ const loginController = async (req, res) => {
       .json({ message: "Internal server error", success: false });
   }
 };
-module.exports = { signUpController, loginController };
+
+
+const logoutController = async (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: false,
+      sameSite: "strict",
+    });
+
+    return res.status(200).json({
+      message: "Logout successful",
+      success: true,
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({
+      message: "Internal server error",
+      success: false,
+    });
+  }
+};
+
+module.exports = { signUpController, loginController, logoutController };
