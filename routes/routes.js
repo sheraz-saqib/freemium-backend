@@ -27,6 +27,7 @@ const {
   editTagController,
   deleteTagController,
 } = require("../controllers/tagController");
+const { getAllTestimonials, addTestimonial, editTestimonial, deleteTestimonial } = require("../controllers/testimonialController");
 const {
   getAllToolController,
   addToolController,
@@ -79,6 +80,13 @@ router.get("/roles", getAllRolesController);
 router.post("/role/add", addRoleController);
 router.put("/role/edit", editRoleController);
 router.delete("/role/delete", deleteRoleController);
+
+//Testimonials
+router.get("/testimonials", getAllTestimonials);
+router.post("/testimonial/add", addTestimonial);
+router.put("/testimonial/edit", editTestimonial);
+router.delete("/testimonial/delete", deleteTestimonial);
+
 
 //Protected routes
 router.get("/products", cookieAuthValidation, (req, res) => {
